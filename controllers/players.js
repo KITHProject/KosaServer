@@ -2,7 +2,7 @@ import PlayerMessage from '../models/playerMessage.js'
 
 export const getPlayers = async (req, res) => {
     try {
-        const playerMessages = await PlayerMessage.find();
+        const playerMessages = await PlayerMessage.find().sort({"kills": -1}).exec() ;
 
         res.status(200).json(playerMessages);
     } catch (error) {
